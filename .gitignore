@@ -1,0 +1,40 @@
+package proj2;
+
+import java.awt.Color;
+import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+		public class frame extends JFrame{
+			
+			private static final long serialVersionUID = 1L;
+			
+			public static void main(String[]args){		
+					
+					JFrame newFrame = new JFrame("Shariki.");
+					
+					newFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+					newFrame.pack();
+					newFrame.setSize(600, 630);
+					graph object = new graph();
+
+					JButton pause = new JButton("PAUSE");
+					pause.setBounds(33,570,70,20);
+					
+					newFrame.add(pause);
+					JButton exit = new JButton("EXIT");
+
+					exit.setBounds(470,570,70,20);
+					
+					newFrame.add(exit);
+					newFrame.add(object);
+					newFrame.setBackground(Color.BLACK);
+					newFrame.setVisible(true);	
+					
+			}
+		}
