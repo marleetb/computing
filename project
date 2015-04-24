@@ -16,12 +16,11 @@ import javax.swing.JFrame;
 
 		public class frame extends JFrame implements ActionListener{
 			
-
 			private static final long serialVersionUID = 1L;
 			
 			public static Timer timer;
 			public static int interval;
-			
+			public static boolean wait;
 			public static void main(String[]args){		
 				
 				String inputtime="6";
@@ -29,134 +28,147 @@ import javax.swing.JFrame;
 			    int period = 1000;
 			    timer = new Timer();
 			    interval = Integer.parseInt(inputtime);
-			    System.out.println(inputtime);
+			    //System.out.println(inputtime);
 			    timer.scheduleAtFixedRate(new TimerTask() {
 			    	
 			        public void run() {
-			            System.out.println(setInterval());
+			            //System.out.println(setInterval());
 			        }
 			    }, delay, period);
-					
-					JFrame newFrame = new JFrame("Balls Game.");
-					
-					newFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-					newFrame.setSize(600, 630);
-					
-					graph object = new graph();
+			    
+			    JFrame fram = new JFrame("Start");
+			    fram.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			    fram.setSize(600,630);
+			    menu menuscreen=new menu();
+			    fram.add(menuscreen);
+			    fram.setVisible(true);
+			    
+				try {
+					Thread.sleep(10000);
+				} catch (InterruptedException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+				
+				JFrame newFrame = new JFrame("Balls Game.");
+				
+				newFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				newFrame.setSize(600, 630);
+				
+				graph object = new graph();
 
-					newFrame.add(object);
-					newFrame.setVisible(true);
+				newFrame.add(object);
+				newFrame.setVisible(true);
 
-					for(int times=0;times<5;times++){
-						
+				for(int times=0;times<5;times++){
+					
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e2) {
+						// TODO Auto-generated catch block
+						e2.printStackTrace();
+					}
+						newFrame.remove(object); 
+						newFrame.repaint();
+					
 						try {
 							Thread.sleep(1000);
-						} catch (InterruptedException e) {
+						} catch (InterruptedException e1) {
 							// TODO Auto-generated catch block
-							e.printStackTrace();
+							e1.printStackTrace();
 						}
-							newFrame.remove(object); 
-							newFrame.repaint();
-						
-							try {
-								Thread.sleep(1000);
-							} catch (InterruptedException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-							newFrame.add(object); 
-							newFrame.repaint();
-					}
+						newFrame.add(object); 
+						newFrame.repaint();
+				}
+				
+					newFrame.remove(object);
+					newFrame.repaint();
+
+					Container c = newFrame.getContentPane();
+					c.setBackground(Color.black); 
 					
-						System.out.println("stuff works after for loop");
-						newFrame.remove(object);
-						newFrame.repaint();
+					JButton buttong=new JButton();
+					buttong.setText("Green");
+					newFrame.add(buttong);
+					buttong.addActionListener(new ActionListener(){
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							// TODO Auto-generated method stub
+							
+							JFrame newFrame2 = new JFrame("Balls Game.");
+							newFrame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+							newFrame2.setSize(600, 630);
+							backg bgg=new backg();
+							newFrame2.add(bgg);
+							newFrame2.setVisible(true);
+						}
+					}); 
 
-						Container c = newFrame.getContentPane();
-						c.setBackground(Color.black); 
-						
-						JButton buttong=new JButton();
-						buttong.setText("Green");
-						newFrame.add(buttong);
-						buttong.addActionListener(new ActionListener(){
-							@Override
-							public void actionPerformed(ActionEvent e) {
-								// TODO Auto-generated method stub
-								
-								JFrame newFrame2 = new JFrame("Balls Game.");
-								newFrame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-								newFrame2.setSize(600, 630);
-								backg bgg=new backg();
-								newFrame2.add(bgg);
-								newFrame2.setVisible(true);
-							}
-						}); 
+					JButton buttonc=new JButton();
+					buttonc.setText("Blue");
+					newFrame.add(buttonc);
+					buttonc.addActionListener(new ActionListener(){
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							// TODO Auto-generated method stub
+							
+							JFrame newFrame2 = new JFrame("Balls Game.");
+							newFrame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+							newFrame2.setSize(600, 630);
+							backc bgc=new backc();
+							newFrame2.add(bgc);
+							newFrame2.setVisible(true);
+							
+						}
+					}); 
 
-						JButton buttonc=new JButton();
-						buttonc.setText("Blue");
-						newFrame.add(buttonc);
-						buttonc.addActionListener(new ActionListener(){
-							@Override
-							public void actionPerformed(ActionEvent e) {
-								// TODO Auto-generated method stub
-								
-								JFrame newFrame2 = new JFrame("Balls Game.");
-								newFrame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-								newFrame2.setSize(600, 630);
-								backc bgc=new backc();
-								newFrame2.add(bgc);
-								newFrame2.setVisible(true);
-								
-							}
-						}); 
+					JButton buttonr=new JButton();
+					buttonr.setText("Red");
+					newFrame.add(buttonr);
+					buttonr.addActionListener(new ActionListener(){
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							// TODO Auto-generated method stub
+							
+							JFrame newFrame2 = new JFrame("Balls Game.");
+							newFrame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+							newFrame2.setSize(600, 630);
+							backr bgr=new backr();
+							newFrame2.add(bgr);
+							newFrame2.setVisible(true);
+							
+						}
+					}); 
 
-						JButton buttonr=new JButton();
-						buttonr.setText("Red");
-						newFrame.add(buttonr);
-						buttonr.addActionListener(new ActionListener(){
-							@Override
-							public void actionPerformed(ActionEvent e) {
-								// TODO Auto-generated method stub
-								
-								JFrame newFrame2 = new JFrame("Balls Game.");
-								newFrame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-								newFrame2.setSize(600, 630);
-								backr bgr=new backr();
-								newFrame2.add(bgr);
-								newFrame2.setVisible(true);
-								
-							}
-						}); 
+					JButton buttony=new JButton();
+					buttony.setText("Yellow");
+					newFrame.add(buttony);
+					buttony.addActionListener(new ActionListener(){
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							// TODO Auto-generated method stub
+							
+							JFrame newFrame2 = new JFrame("Balls Game.");
+							newFrame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+							newFrame2.setSize(600, 630);
+							
+							backy bgy=new backy();
+							newFrame2.add(bgy);
+							newFrame2.setVisible(true);
+							
+						}
+					});  
+					
+					buttong.setBounds(125, 100, 75, 50);
+					buttonc.setBounds(125, 400, 75, 50);
+					buttonr.setBounds(400, 400, 75, 50);
+					buttony.setBounds(400, 100, 75, 50);
 
-						JButton buttony=new JButton();
-						buttony.setText("Yellow");
-						newFrame.add(buttony);
-						buttony.addActionListener(new ActionListener(){
-							@Override
-							public void actionPerformed(ActionEvent e) {
-								// TODO Auto-generated method stub
-								
-								JFrame newFrame2 = new JFrame("Balls Game.");
-								newFrame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-								newFrame2.setSize(600, 630);
-								backy bgy=new backy();
-								newFrame2.add(bgy);
-								newFrame2.setVisible(true);
-								
-							}
-						});  
-						
-						buttong.setBounds(125, 100, 75, 50);
-						buttonc.setBounds(125, 400, 75, 50);
-						buttonr.setBounds(400, 400, 75, 50);
-						buttony.setBounds(400, 100, 75, 50);
-
-						newFrame.repaint();
-						
-						//once button is clicked, show scores or whatever
-						
+					newFrame.repaint();
+					
+				
 			}
-					
+				
 				private static final int setInterval() {
 					    if (interval == 1)
 					        timer.cancel();
@@ -168,264 +180,4 @@ import javax.swing.JFrame;
 					// TODO Auto-generated method stub
 					
 				}
-}
-
-package proj2;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Point;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.util.Random;
-import java.util.Scanner;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import javax.swing.JPanel;
-	
-	public class graph extends JPanel {
-		/**
-		 * 
-		 */
-		private static final long serialVersionUID = 1L;
-		static int x = 50;
-	    static int y = 60;
-	    static int sizes = 50;
-	    public static int recall1;
-		public static int recall2;
-		public static int recall3;
-		public static int recall4;
-		public static int recall1one,recall2one,recall3one,recall4one,
-		recall1two,recall2two,recall3two,recall4two,
-		recall1three,recall2three,recall3three,recall4three,
-		recall1four,recall2four,recall3four,recall4four,
-		recall1five,recall2five,recall3five,recall4five;
-	    public static int green;
-	    public static int cyan;
-	    public static int yellow;
-	    public static int red;
-		
-	    public void paintComponent(Graphics g){
-			
-	    			int Array[] = {recall1one,recall2one,recall3one,recall4one,
-	    					recall1two,recall2two,recall3two,recall4two,
-	    					recall1three,recall2three,recall3three,recall4three,
-	    					recall1four,recall2four,recall3four,recall4four,
-	    					recall1five,recall2five,recall3five,recall4five
-	    		    };
-
-			super.paintComponent(g);
-
-			int score = 0;
-			g.drawString("USERNAME: "+score, 30, 30);
-			
-			int timeleft=0;
-			g.drawString("TIME LEFT: "+timeleft,470,30);
-
-			//creates  background
-			g.setColor(Color.DARK_GRAY);
-			g.fillRect(40, 50, 500, 500);
-			g.setColor(Color.black);
-			g.fillRect(30, 40, 10, 510);
-			g.setColor(Color.black);
-			g.fillRect(540, 40, 10, 510);
-			g.setColor(Color.black);
-			g.fillRect(30, 40, 520, 10);
-			g.setColor(Color.black);
-			g.fillRect(30, 540, 520, 10);
-
-			int space = 0;recall1=0;recall2=0;recall3=0;recall4=0;
-							
-					for(int downw=8; downw>1; downw--){
-					//makes 7 rows
-						for(int randoms=0; randoms<8; randoms++){
-							//creates 8 balls along each row
-								
-								Random randomNum = new Random();
-								int rand = randomNum.nextInt(4);
-								
-										if(rand==0){
-											//green
-											g.setColor(Color.GREEN);	 
-											g.fillOval(x, y, sizes, sizes);
-											x=x+60;									
-											recall1++;
-											//intArray01[i]++;
-											
-										}if(rand==1){
-											//cyan
-											g.setColor(Color.CYAN);	 
-											g.fillOval(x, y, sizes, sizes);
-											x=x+60;
-											recall2++;
-											//intArray02[i]++;
-
-										}if(rand==2){
-											//yellow
-											g.setColor(Color.YELLOW);	 
-											g.fillOval(x, y, sizes, sizes);
-											x=x+60;
-											recall3++;
-											//intArray03[i]++;
-
-
-										}if(rand==3){
-											//red
-											g.setColor(Color.RED);	 
-											g.fillOval(x, y, sizes, sizes);
-											x=x+60;
-											recall4++;
-											//intArray04[i]++;
-
-										}
-						}
-							x=50;
-							y=y+70;
-							space++;
-							//reasons for not Shoewr:
-							//gotta Get UpGotta get dDRIed
-					}
-
-					System.out.println("green: "+recall1);
-					System.out.println("cyan: "+recall2);
-					System.out.println("yellow: "+recall3);
-					System.out.println("red: "+recall4);
-					
-					
-					if(recall1one==0){
-						recall1one=recall1+recall1one;
-					}if(recall2one==0){
-						recall2one=recall2+recall2one;
-					}if(recall3one==0){
-						recall3one=recall3+recall3one;
-					}if(recall4one==0){
-						recall4one=recall4+recall4one;
-					}
-					if(recall1two==0){
-						recall1two=recall1+recall1two;
-					}if(recall2two==0){
-						recall2two=recall2+recall2two;
-					}if(recall3two==0){
-						recall3two=recall3+recall3two;
-					}if(recall4two==0){
-						recall4two=recall4+recall4two;
-					}
-					if(recall1three==0){
-						recall1three=recall1+recall1three;
-					}if(recall2three==0){
-						recall2three=recall2+recall2three;
-					}if(recall3three==0){
-						recall3three=recall3+recall3three;
-					}if(recall4three==0){
-						recall4three=recall4+recall4three;
-					}
-					if(recall1four==0){
-						recall1four=recall1+recall1four;
-					}if(recall2four==0){
-						recall2four=recall2+recall2four;
-					}if(recall3four==0){
-						recall3four=recall3+recall3four;
-					}if(recall4four==0){
-						recall4four=recall4+recall4four;
-					}
-					if(recall1five==0){
-						recall1five=recall1+recall1five;
-					}if(recall2five==0){
-						recall2five=recall2+recall2five;
-					}if(recall3five==0){
-						recall3five=recall3+recall3five;
-					}if(recall4five==0){
-						recall4five=recall1+recall4five;
-					}
-					//print out scores somewhere that can be shown later
-					green=recall1one+recall1two+recall1three+recall1four+recall1five;
-					cyan=recall2one+recall2two+recall2three+recall2four+recall2five;
-					yellow=recall3one+recall3two+recall3three+recall3four+recall3five;
-					red=recall4one+recall4two+recall4three+recall4four+recall4five;
-					
-					y=60;
-		}
-}
-
-package proj2;
-import java.awt.Graphics;
-
-import javax.swing.JPanel;
-
-public class backg extends JPanel {
-	public void paintComponent(Graphics g) {
-		
-		super.paintComponent(g);
-		g.drawString("You chose green.", 50, 50);
-
-		g.drawString("The number of green balls was: "+graph.green, 100, 100);
-		g.drawString("The number of blue balls was: "+graph.cyan, 100, 200);
-		g.drawString("The number of yellow balls was: "+graph.yellow, 100, 300);
-		g.drawString("The number of red balls was: "+graph.red, 100, 400);
-
-	}
-}
-package proj2;
-
-import java.awt.Graphics;
-
-import javax.swing.JPanel;
-	public class backr extends JPanel{
-		public void paintComponent(Graphics g) {
-		
-			super.paintComponent(g);
-			System.out.println("bg works");
-		
-			g.drawString("You chose red.", 50, 50);
-		
-			g.drawString("The number of green balls was: "+graph.green, 100, 100);
-			g.drawString("The number of blue balls was: "+graph.cyan, 100, 200);
-			g.drawString("The number of yellow balls was: "+graph.yellow, 100, 300);
-			g.drawString("The number of red balls was: "+graph.red, 100, 400);
-		
-	}
-}
-package proj2;
-
-import java.awt.Graphics;
-
-import javax.swing.JPanel;
-
-	public class backy extends JPanel{
-		public void paintComponent(Graphics g) {
-		
-			super.paintComponent(g);
-			System.out.println("bg works");
-	
-			g.drawString("You chose yellow.", 50, 50);
-	
-			g.drawString("The number of green balls was: "+graph.green, 100, 100);
-			g.drawString("The number of blue balls was: "+graph.cyan, 100, 200);
-			g.drawString("The number of yellow balls was: "+graph.yellow, 100, 300);
-			g.drawString("The number of red balls was: "+graph.red, 100, 400);
-		}
-	}
-package proj2;
-
-import java.awt.Graphics;
-
-import javax.swing.JPanel;
-
-public class backc extends JPanel {
-	public void paintComponent(Graphics g) {
-		
-		super.paintComponent(g);
-		System.out.println("bg works");
-	
-		g.drawString("You chose blue.", 50, 50);
-	
-	
-		g.drawString("The number of green balls was: "+graph.green, 100, 100);
-		g.drawString("The number of blue balls was: "+graph.cyan, 100, 200);
-		g.drawString("The number of yellow balls was: "+graph.yellow, 100, 300);
-		g.drawString("The number of red balls was: "+graph.red, 100, 400);
-
-  }
 }
