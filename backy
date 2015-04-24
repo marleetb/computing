@@ -1,0 +1,28 @@
+package proj2;
+
+import java.awt.Color;
+import java.awt.Graphics;
+
+import javax.swing.JPanel;
+
+	public class backy extends JPanel{
+		public void paintComponent(Graphics g) {
+		
+			super.paintComponent(g);
+			setBackground(Color.DARK_GRAY); 
+		    g.setColor(Color.white);
+	
+			g.drawString("You chose yellow.", 50, 50);
+	
+			g.drawString("The number of green balls was: "+graph.green, 100, 100);
+			g.drawString("The number of blue balls was: "+graph.cyan, 100, 200);
+			g.drawString("The number of yellow balls was: "+graph.yellow, 100, 300);
+			g.drawString("The number of red balls was: "+graph.red, 100, 400);
+			
+			if(graph.yellow>graph.green && graph.yellow>graph.cyan && graph.yellow>graph.red){
+				g.drawString("You were right! Well done!", 100, 500);
+			}else{
+				g.drawString("Incorrect answer.", 100, 500);
+			}
+		}
+	}
