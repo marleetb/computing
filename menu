@@ -1,0 +1,43 @@
+package proj2;
+
+import java.awt.Color;
+import java.awt.Graphics;
+
+import javax.swing.JPanel;
+
+public class menu extends JPanel{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public void paintComponent(Graphics g){
+		
+		setBackground(Color.DARK_GRAY); 
+		super.paintComponent(g);
+
+	    g.setColor(Color.white);
+
+		g.drawString("INTRODUCTIONS", 50, 100);
+		g.drawString("This game requires you to use your short-term memory.",50,150);
+		g.drawString("Read these instructions fast - you only have 20 seconds!",50,175);
+		
+		g.drawString("You will soon see a set of screens pop up.", 50, 200);
+		g.drawString("On these screen will be randomly placed balls of four colours.",50,225);
+		g.drawString("At the end of this game you will be asked to choose one colour.",50,250);
+		g.drawString("Your choice should represent the highest overall number of balls that colour.",50,300);
+		g.drawString("Good luck!", 50, 340);
+		
+		g.setColor(Color.GREEN);	 
+		g.fillOval(50,400,50,50);
+		g.setColor(Color.CYAN);	 
+		g.fillOval(105,400,50,50);
+		g.setColor(Color.YELLOW);	 
+		g.fillOval(160,400,50,50);
+		g.setColor(Color.RED);	 
+		g.fillOval(215,400,50,50);
+
+		
+	}
+}
