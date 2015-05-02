@@ -1,0 +1,97 @@
+package proj2;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class databse {
+	
+	static int idu;
+	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+	static final String DB_URL = "jdbc:mysql://217.68.242.172/games_memory";
+	
+	static final String USER = "games_memory";
+	static final String PASS = "Pa55w0rd";
+	public static int score;
+	  
+	/**
+	* @param args
+	*/
+	@SuppressWarnings("resource")
+	public static void main(String[] args) {
+	// TODO Auto-generated method stub
+	
+		if(idu<1){
+			idu=1;
+		}
+		 String username=frame.usertext;
+		    
+		    
+		    
+	Connection conn = null;
+	  Statement stmt = null;
+	  try{
+	      //register  driver
+	      Class.forName("com.mysql.jdbc.Driver");
+	      
+	      //connect
+	      System.out.println("Connecting to database...");
+	      conn = DriverManager.getConnection(DB_URL,USER,PASS);
+	      
+	      System.out.println("Creating statement...");
+
+	      //get data
+	      stmt = conn.createStatement();
+	      String sql;
+	      sql = "SELECT ID, Name, Score FROM high_table LIMIT 0 , 30";
+	      ResultSet resset = stmt.executeQuery(sql);
+		    
+		    while(resset.next()){
+			     
+		        int id  = resset.getInt("ID");
+		        String name = resset.getString("Name");
+		        int score = resset.getInt("Score");
+		        
+		        //values
+		        System.out.println("ID: "+id);
+		        System.out.println("Name: "+name);
+		        System.out.println("score: "+score);
+	      }
+		    
+		    String name="mystery";
+		    int scoring=10;
+		    
+		    System.out.println("Adding user to the database");
+		      stmt = conn.createStatement();
+		      stmt.execute("INSERT INTO high_table (ID, Name, Score) " +
+		                "VALUES("+idu+",name, scoring");      
+		      idu++;
+
+		      stmt.close();
+		      conn.close();
+
+	  }catch(SQLException se){
+	      //jdbc errors
+	      se.printStackTrace();
+	  }catch(Exception e){
+	      //class.name errors
+	      e.printStackTrace();
+	  }finally{
+	      //finally block used to close resources
+	      try{
+	        if(stmt!=null)
+	            stmt.close();
+	      }catch(SQLException se2){
+	      }//shrug
+	      try{
+	        if(conn!=null)
+	            conn.close();
+	      }catch(SQLException se){
+	        se.printStackTrace();
+	      }
+	  }
+	  System.out.println("Goodbye!");
+	}
+}
