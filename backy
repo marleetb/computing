@@ -1,11 +1,11 @@
-package proj2;
-
+packagepackage proj2;
 import java.awt.Color;
 import java.awt.Graphics;
 
 import javax.swing.JPanel;
-
 	public class backy extends JPanel{
+		public static int score;
+
 		public void paintComponent(Graphics g) {
 		
 			super.paintComponent(g);
@@ -19,10 +19,34 @@ import javax.swing.JPanel;
 			g.drawString("The number of yellow balls was: "+graph.yellow, 100, 300);
 			g.drawString("The number of red balls was: "+graph.red, 100, 400);
 			
+			g.drawString("Input a username below.",100,520);
 			if(graph.yellow>graph.green && graph.yellow>graph.cyan && graph.yellow>graph.red){
 				g.drawString("You were right! Well done!", 100, 500);
+				int score=100;
 			}else{
 				g.drawString("Incorrect answer.", 100, 500);
+				if(graph.yellow<graph.green && graph.yellow<graph.red && graph.yellow<graph.cyan){
+					//lowest
+					int score=0;
+				}else if(graph.yellow<graph.green && graph.yellow<graph.red && graph.yellow>graph.cyan){
+					//second lowest
+					int score=25;
+				}else if(graph.yellow<graph.green && graph.yellow<graph.cyan && graph.yellow>graph.red){
+					//second lowest
+					int score=25;
+				}else if(graph.yellow<graph.red && graph.yellow<graph.cyan && graph.yellow>graph.green){
+					//second lowest
+					int score=25;
+				}else if(graph.yellow<graph.red && graph.yellow>graph.cyan && graph.yellow>graph.green){
+					//half
+					int score=50;
+				}else if(graph.yellow<graph.green && graph.yellow>graph.cyan && graph.yellow>graph.red){
+					//half
+					int score=50;
+				}else if(graph.yellow<graph.cyan && graph.yellow>graph.green && graph.yellow>graph.red){
+					//half
+					int score=50;
+				}
 			}
 		}
 	}
