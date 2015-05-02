@@ -1,40 +1,24 @@
 package proj2;
-
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
-import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.util.Scanner;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 		public class frame extends JFrame implements ActionListener{
 			
 			private static final long serialVersionUID = 1L;
-			
-			public static Timer timer;
-			public static int interval;
-			public static boolean wait;
+			public static boolean green;
+			public static boolean cyan;
+			public static boolean red;
+			public static boolean yellow;
+			public static String usertext;
 			public static void main(String[]args){		
-				
-				String inputtime="6";
-			    int delay = 1000;
-			    int period = 1000;
-			    timer = new Timer();
-			    interval = Integer.parseInt(inputtime);
-			    //System.out.println(inputtime);
-			    timer.scheduleAtFixedRate(new TimerTask() {
-			    	
-			        public void run() {
-			            //System.out.println(setInterval());
-			        }
-			    }, delay, period);
 			    
 			    JFrame fram = new JFrame("Start");
 			    fram.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -85,11 +69,12 @@ import javax.swing.JFrame;
 					newFrame.repaint();
 
 					Container c = newFrame.getContentPane();
-					c.setBackground(Color.black); 
+					c.setBackground(Color.DARK_GRAY);
 					
 					JButton buttong=new JButton();
 					buttong.setText("Green");
 					newFrame.add(buttong);
+					
 					buttong.addActionListener(new ActionListener(){
 						@Override
 						public void actionPerformed(ActionEvent e) {
@@ -101,6 +86,19 @@ import javax.swing.JFrame;
 							backg bgg=new backg();
 							newFrame2.add(bgg);
 							newFrame2.setVisible(true);
+							boolean green=true;
+							
+							JTextField field = new JTextField(); 
+							newFrame2.add(field, BorderLayout.SOUTH); 
+							//field.setBounds(500, 50, 200, 100);
+							field.addActionListener(new ActionListener(){
+								public void actionPerformed(ActionEvent e){
+							         
+									System.out.println("this should work wth");
+									usertext = field.getText();
+									
+								}
+							});
 						}
 					}); 
 
@@ -118,7 +116,16 @@ import javax.swing.JFrame;
 							backc bgc=new backc();
 							newFrame2.add(bgc);
 							newFrame2.setVisible(true);
-							
+							boolean cyan=true;
+							JTextField field = new JTextField(); 
+							newFrame2.add(field, BorderLayout.SOUTH); 
+							field.addActionListener(new ActionListener(){
+								public void actionPerformed(ActionEvent e){
+							         
+									usertext = field.getText();
+									
+								}
+							});
 						}
 					}); 
 
@@ -136,7 +143,17 @@ import javax.swing.JFrame;
 							backr bgr=new backr();
 							newFrame2.add(bgr);
 							newFrame2.setVisible(true);
+							boolean red=true;
 							
+							JTextField field = new JTextField(); 
+							newFrame2.add(field, BorderLayout.SOUTH); 
+							field.addActionListener(new ActionListener(){
+								public void actionPerformed(ActionEvent e){
+							         
+									usertext = field.getText();
+									
+								}
+							});
 						}
 					}); 
 
@@ -147,7 +164,6 @@ import javax.swing.JFrame;
 						@Override
 						public void actionPerformed(ActionEvent e) {
 							// TODO Auto-generated method stub
-							
 							JFrame newFrame2 = new JFrame("Balls Game.");
 							newFrame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 							newFrame2.setSize(600, 630);
@@ -155,7 +171,17 @@ import javax.swing.JFrame;
 							backy bgy=new backy();
 							newFrame2.add(bgy);
 							newFrame2.setVisible(true);
-							
+							boolean yellow=true;
+
+							JTextField field = new JTextField(); 
+							newFrame2.add(field, BorderLayout.SOUTH); 
+							field.addActionListener(new ActionListener(){
+								public void actionPerformed(ActionEvent e){
+							         
+									usertext = field.getText();
+									
+								}
+							});
 						}
 					});  
 					
@@ -164,20 +190,11 @@ import javax.swing.JFrame;
 					buttonr.setBounds(400, 400, 75, 50);
 					buttony.setBounds(400, 100, 75, 50);
 
-					newFrame.repaint();
+					newFrame.repaint();  
 					
-				
 			}
-				
-				private static final int setInterval() {
-					    if (interval == 1)
-					        timer.cancel();
-					    	return --interval;
-					}
-
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
-					
 				}
 }
